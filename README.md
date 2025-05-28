@@ -32,30 +32,48 @@ Safely exit the application.
 
 The application uses a relational database with the following tables:
 
-1. Artists:
+1. ## Artists:
 
 id: Unique identifier.
 name: Name of the artist.
 genre: Genre of the artist.
 
-2. Albums:
+2. ## Albums:
 
 id: Unique identifier.
 title: Title of the album.
 artist_id: Foreign key linking to the artists table.
 
-3. Tracks:
+3. ## Tracks:
 
 id: Unique identifier.
 title: Title of the track.
 duration: Duration of the track (in seconds).
 album_id: Foreign key linking to the albums table.
 
-4. Playlists:
+4. ## Playlists:
 
 id: Unique identifier.
 name: Name of the playlist.
 
-5. Playlist Tracks:
+5. ## Playlist Tracks:
 
 Association table for the many-to-many relationship between Playlists and Tracks.
+
+## How to Run
+
+1. ## Set Up Virtual Environment:
+
+- Activate the virtual environment:
+  
+  source .venv/bin/activate
+
+2. ## Run the CLI:
+
+- Start the application:
+
+  python lib/cli.py
+
+3. ## Follow the Prompts:
+
+Use the menu options to create playlists, add tracks, view playlists, and more.
