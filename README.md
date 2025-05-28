@@ -77,3 +77,18 @@ Association table for the many-to-many relationship between Playlists and Tracks
 3. ## Follow the Prompts:
 
 Use the menu options to create playlists, add tracks, view playlists, and more.
+
+## Example Usage
+
+## Create a Playlist
+
+Music CLI
+1. Create Playlist
+2. Add Track to Playlist
+3. View Playlist
+4. List Playlists
+5. List Tracks
+6. Exit
+Enter your choice: 1
+Enter playlist name: Chill Vibes
+Playlist 'Chill Vibes' created.
