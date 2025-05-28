@@ -124,3 +124,11 @@ Playlist: Chill Vibes
 ## Real-World Problem:
 
   - Solves the problem of organizing and managing music libraries.
+
+## Contributing
+
+Feel free to contribute to this project by submitting issues or pull requests. All contributions are welcome!
+
+## License
+
+This project is licensed under the MIT License.
