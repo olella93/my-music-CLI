@@ -80,20 +80,46 @@ def view_playlist():
     playlist = session.get(Playlist, playlist_id)
     if playlist:
         print(f"Playlist: {playlist.name}")
-        for track in playlist.tracks:
-            print(f"- {track.title} ({track.duration})")
+        tracks = [{"title": track.title, "duration": track.duration} for track in playlist.tracks]
+        for track in tracks:
+            print(f"- {track['title']} ({track['duration']})")
     else:
         print("Playlist not found.")
 
+def list_playlists():
+    playlists = session.query(Playlist).all()
+    if playlists:
+        print("Playlists:")
+        for playlist in playlists:
+            print(f"- {playlist.id}: {playlist.name}")
+    else:
+        print("No playlists found.")
+
+def list_tracks():
+    tracks = session.query(Track).all()
+    if tracks:
+        print("Tracks:")
+        for track in tracks:
+            print(f"- {track.id}: {track.title} ({track.duration})")
+    else:
+        print("No tracks found.")
+
 # Main CLI Loop
 def main():
+    MENU_OPTIONS = (
+        ("1", "Create Playlist"),
+        ("2", "Add Track to Playlist"),
+        ("3", "View Playlist"),
+        ("4", "List Playlists"),
+        ("5", "List Tracks"),
+        ("6", "Exit")
+    )
+
     while True:
         print("\nMusic CLI")
-        print("1. Create Playlist")
-        print("2. Add Track to Playlist")
-        print("3. View Playlist")
-        print("4. Exit")
-        choice = input("Enter your choice: ")
+        for option in MENU_OPTIONS:
+            print(f"{option[0]}. {option[1]}")
+        choice = input("Enter your choice: ").strip()
 
         if choice == "1":
             create_playlist()
@@ -102,6 +128,10 @@ def main():
         elif choice == "3":
             view_playlist()
         elif choice == "4":
+            list_playlists()
+        elif choice == "5":
+            list_tracks()
+        elif choice == "6":
             print("Goodbye!")
             break
         else:
