@@ -27,3 +27,35 @@ Safely exit the application.
 - SQLAlchemy: ORM for managing the database and relationships.
 - SQLite: Lightweight database for storing music data.
 - Virtual Environment: .venv for dependency management.
+
+## Database Structure
+
+The application uses a relational database with the following tables:
+
+1. Artists:
+
+id: Unique identifier.
+name: Name of the artist.
+genre: Genre of the artist.
+
+2. Albums:
+
+id: Unique identifier.
+title: Title of the album.
+artist_id: Foreign key linking to the artists table.
+
+3. Tracks:
+
+id: Unique identifier.
+title: Title of the track.
+duration: Duration of the track (in seconds).
+album_id: Foreign key linking to the albums table.
+
+4. Playlists:
+
+id: Unique identifier.
+name: Name of the playlist.
+
+5. Playlist Tracks:
+
+Association table for the many-to-many relationship between Playlists and Tracks.
