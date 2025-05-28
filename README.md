@@ -89,6 +89,38 @@ Music CLI
 4. List Playlists
 5. List Tracks
 6. Exit
+
 Enter your choice: 1
+
 Enter playlist name: Chill Vibes
+
 Playlist 'Chill Vibes' created.
+
+## View a Playlist
+
+Music CLI
+1. Create Playlist
+2. Add Track to Playlist
+3. View Playlist
+4. List Playlists
+5. List Tracks
+6. Exit
+
+Enter your choice: 3
+
+Enter playlist ID: 1
+
+Playlist: Chill Vibes
+- Smooth Ride (225)
+
+### Project Highlights
+
+- Phase 3 Skills:
+
+ - SQLAlchemy ORM for database management.
+ - Use of lists, dictionaries, and tuples for efficient data handling.
+ - Modular CLI design adhering to best practices.
+
+## Real-World Problem:
+
+  - Solves the problem of organizing and managing music libraries.
