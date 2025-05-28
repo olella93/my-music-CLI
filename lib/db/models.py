@@ -33,6 +33,12 @@ class Track(Base):
     album = relationship('Album', back_populates='tracks')
 
 # DB setup
-engine = create_engine('sqlite:///mymusic.db')
+engine = create_engine('sqlite:///lib/db/my_music.db')
 Session = sessionmaker(bind=engine)
 session = Session()
+
+
+if __name__ == "__main__":
+    print("Creating tables...")
+    Base.metadata.create_all(engine)
+    print("Tables created successfully!")
