@@ -114,6 +114,23 @@ def delete_playlist():
     else:
         print("Playlist not found.")
 
+def add_track():
+    title = input("Enter track title: ")
+    duration = int(input("Enter track duration (in seconds): "))
+    album_id = int(input("Enter album ID (or 0 if no album): "))
+
+    # Check if the album exists
+    album = session.get(Album, album_id) if album_id != 0 else None
+    if album_id != 0 and not album:
+        print("Album not found. Track will not be added.")
+        return
+
+    # Create and add the track
+    track = Track(title=title, duration=duration, album=album)
+    session.add(track)
+    session.commit()
+    print(f"Track '{title}' added successfully!")
+
 # Main CLI Loop
 def main():
     MENU_OPTIONS = (
@@ -122,8 +139,9 @@ def main():
         ("3", "View Playlist"),
         ("4", "List Playlists"),
         ("5", "List Tracks"),
-        ("6", "Delete Playlist"), 
-        ("7", "Exit")
+        ("6", "Delete Playlist"),
+        ("7", "Add Track"),
+        ("8", "Exit")
     )
 
     while True:
@@ -143,8 +161,10 @@ def main():
         elif choice == "5":
             list_tracks()
         elif choice == "6":
-            delete_playlist()  
+            delete_playlist()
         elif choice == "7":
+            add_track()
+        elif choice == "8":
             print("Goodbye!")
             break
         else:
