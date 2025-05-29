@@ -104,6 +104,16 @@ def list_tracks():
     else:
         print("No tracks found.")
 
+def delete_playlist():
+    playlist_id = int(input("Enter playlist ID to delete: "))
+    playlist = session.get(Playlist, playlist_id)
+    if playlist:
+        session.delete(playlist)
+        session.commit()
+        print(f"Playlist '{playlist.name}' deleted.")
+    else:
+        print("Playlist not found.")
+
 # Main CLI Loop
 def main():
     MENU_OPTIONS = (
@@ -112,7 +122,8 @@ def main():
         ("3", "View Playlist"),
         ("4", "List Playlists"),
         ("5", "List Tracks"),
-        ("6", "Exit")
+        ("6", "Delete Playlist"), 
+        ("7", "Exit")
     )
 
     while True:
@@ -132,6 +143,8 @@ def main():
         elif choice == "5":
             list_tracks()
         elif choice == "6":
+            delete_playlist()  
+        elif choice == "7":
             print("Goodbye!")
             break
         else:
