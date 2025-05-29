@@ -131,6 +131,22 @@ def add_track():
     session.commit()
     print(f"Track '{title}' added successfully!")
 
+def create_album():
+    title = input("Enter album title: ")
+    artist_id = int(input("Enter artist ID (or 0 if no artist): "))
+
+    # Check if the artist exists
+    artist = session.get(Artist, artist_id) if artist_id != 0 else None
+    if artist_id != 0 and not artist:
+        print("Artist not found. Album will not be added.")
+        return
+
+    # Create and add the album
+    album = Album(title=title, artist=artist)
+    session.add(album)
+    session.commit()
+    print(f"Album '{title}' added successfully!")
+
 # Main CLI Loop
 def main():
     MENU_OPTIONS = (
@@ -141,7 +157,8 @@ def main():
         ("5", "List Tracks"),
         ("6", "Delete Playlist"),
         ("7", "Add Track"),
-        ("8", "Exit")
+        ("8", "Create Album"),
+        ("9", "Exit")
     )
 
     while True:
@@ -165,6 +182,8 @@ def main():
         elif choice == "7":
             add_track()
         elif choice == "8":
+            create_album()
+        elif choice == "9":
             print("Goodbye!")
             break
         else:
